@@ -3,6 +3,9 @@
 //por la cantidad de numero que queremos que se encuentre
 let numeroAzar = Math.floor(Math.random()*100) + 1;
 
+let numeroEntrada = document.getElementById('numeroEntrada');
+let mensaje = document.getElementById('mensaje');
+
 
 
 
@@ -13,5 +16,21 @@ let numeroAzar = Math.floor(Math.random()*100) + 1;
 
 // Esta accion se va a ejecutar cuando se presione el boton chequear
 function chequearResultado(){
+    let numeroIngresado = parseInt(numeroEntrada.value);
 
+    if(numeroIngresado < 1 || numeroIngresado > 100 || isNaN(numeroIngresado)){
+        mensaje.textContent = 'Por favor ingresa un numero valido entre 0 y 100';
+        return;
+    }
+
+    if(numeroIngresado === numeroAzar){
+        mensaje.textContent = '¡¡¡Felicitaciones!!! ¡¡Haz adivinado el numero!!';
+        mensaje.style.color = 'green';
+        numeroEntrada.disabled = true;
+    }else if(numeroIngresado < numeroAzar){
+        mensaje.textContent = '¡¡¡Mas alto!!! ¡¡El numero es mayor al que dijiste!!';
+        mensaje.style.color = 'red';
+    }else{
+        
+    }
 }
